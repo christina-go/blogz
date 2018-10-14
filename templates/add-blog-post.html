@@ -1,0 +1,28 @@
+{% extends 'wrapper.html'%}
+
+{% block content %}
+    <h1>My blog!</h1>
+    <form method='post'>
+        <label>
+            Title
+            <input type="text" name='title'  />
+        </label>
+        <br>
+        <label>
+            Blog Post
+            <textArea rows="4" cols="50" name='body'  /> </textArea>
+        </label>
+        <input type="submit" value='Add Post'  />
+    </form>
+
+    {% if blog_posts|length == 1 %}
+        <ul>
+            {% for blog_post in blog_posts %}
+            <li>{{title}}</li>
+            <li>{{body}}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+{% endblock %}    

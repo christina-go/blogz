@@ -1,0 +1,30 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Blog</title>
+        <style>
+            .navigation {
+                align-content: left
+            
+            }
+        </style>
+    </head>
+<body>
+    <div class="navigation">
+        <a href='/blog'>Home</a>
+    </div>
+    <div class="navigation">
+        <a href='/newpost'>Create a New Post</a>
+    </div> 
+
+        <ul>
+        {% for blogPost in blogPosts %}
+        <li>{{title}}</li>
+        <li>{{body}}</li>
+        {% endfor %}
+        </ul>
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
