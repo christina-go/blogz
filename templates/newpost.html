@@ -1,0 +1,25 @@
+{% extends 'wrapper.html'%}
+
+{% block content %}
+    <form method='post'>
+        <label>
+            Title
+            <input type="text" name='title' required />
+        </label>
+        <br>
+        <label>
+            Blog Post
+            <textArea rows="20" cols="100" name='body' required /> </textArea>
+        </label>
+        <input type="submit" value='Publish'  />
+    </form>
+    
+    <h1>Previous Posts</h1>
+    <ul>
+        {% for post in all_blog_posts %}
+        <li><a href="./blog?id={{post.id}}"> {{post.title}} </a></li>
+        <p>{{post.body}}</p>
+        {% endfor %}
+    </ul>  
+
+{% endblock %}    

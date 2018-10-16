@@ -17,14 +17,12 @@
         <a href='/newpost'>Create a New Post</a>
     </div> 
 
-        <ul>
-        {% for blogPost in blogPosts %}
-        <li>{{title}}</li>
-        <li>{{body}}</li>
-        {% endfor %}
-        </ul>
+
+    <h1>My blog!</h1>
+
     {% block content %}
     {% endblock %}
+
 
 </body>
 </html>

@@ -1,0 +1,18 @@
+{% extends 'wrapper.html' %}
+
+{% block content %}
+{% if all_blog_posts|length == 0 %}
+<p>No posts yet</p>
+
+{% else %}
+    <ul>
+        {% for post in all_blog_posts %}
+        <li><a href="./blog?id={{post.id}}"> {{post.title}} </a></li>
+        <p>{{post.body}}</p>
+        {% endfor %}
+    </ul>   
+
+{% endif %}
+
+
+{% endblock %}

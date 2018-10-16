@@ -19,14 +19,20 @@ class Blog(db.Model):
         self.title = title
         self.body = body
 
+all_blog_posts = Blog.query.all()
 
-@app.route('/blog', methods=['GET', 'POST'])
-def index():
+@app.route('/blog', methods=['GET'])
+def display():
+    if request.method == 'GET':
 
-    blog_posts = Blog.query.filter_by().all()
-    return render_template('all-blog-posts.html', title=title, body=body)
+        blog_id = request.args.get('id')
 
+        if (blog_id):
+            post = Blog.query.get(blog_id)
 
+            return render_template('blogpost.html', post=post)
+
+    return render_template('blog.html', all_blog_posts=all_blog_posts) 
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def add_blog_post():
@@ -38,12 +44,15 @@ def add_blog_post():
         
         new_blog_post = Blog(title, body)
         db.session.add(new_blog_post)
-        db.session.commit()  
+        db.session.commit()
 
-        return redirect('/blog')  
+        return redirect('/blog?id=' + str(new_blog_post.id))  
     
-    flash("Something went wrong")
-    return render_template('add-blog-post.html')
+    else:
+
+        return render_template('newpost.html', all_blog_posts=all_blog_posts)
+
+
 
 
 if __name__ == '__main__':
