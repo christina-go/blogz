@@ -1,28 +1,42 @@
 <!doctype HTML>
 <html>
     <head>
-        <title>Blog</title>
-        <style>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+            <style>             
             .navigation {
-                align-content: left
-            
+                align-content: left;
+                display: inline-block;
+                margin: 10px;   
+            }
+
+            .input_field {
+                margin: 50px;
+                display: block;
+                padding-top: 20px;
+                text-align: left;
+                box-flex: auto;
+            }
+
+            h1 {
+                text-align: center;
             }
         </style>
+        <title>Doctor Who Blog</title>
+
     </head>
 <body>
     <div class="navigation">
         <a href='/blog'>Home</a>
     </div>
-    <div class="navigation">
+    <div class="navigation" display="inline-block">
         <a href='/newpost'>Create a New Post</a>
     </div> 
 
 
-    <h1>My blog!</h1>
+    <h1 class="page-title">Doctor Who</h1>
 
     {% block content %}
     {% endblock %}
-
 
 </body>
 </html>

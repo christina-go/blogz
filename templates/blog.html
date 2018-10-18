@@ -1,7 +1,9 @@
 {% extends 'wrapper.html' %}
 
 {% block content %}
+
 {% if all_blog_posts|length == 0 %}
+    
 <p>No posts yet</p>
 
 {% else %}
@@ -13,6 +15,5 @@
     </ul>   
 
 {% endif %}
-
 
 {% endblock %}

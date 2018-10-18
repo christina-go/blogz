@@ -2,16 +2,20 @@
 
 {% block content %}
     <form method='post'>
-        <label>
+        <div class="form-group">
+        <label class="input_field">
             Title
-            <input type="text" name='title' required />
+            <input class="form-control" type="text" name='title' required/>
         </label>
         <br>
-        <label>
+        <label class="input_field">
             Blog Post
-            <textArea rows="20" cols="100" name='body' required /> </textArea>
+            <textArea class="form-control" rows="20" cols="100" name='body' required/></textArea>
         </label>
-        <input type="submit" value='Publish'  />
+        <label class="input_field">
+        <input class=" btn btn-default" type="submit" value='Publish'  />
+        </label>
+        </div>
     </form>
     
     <h1>Previous Posts</h1>
