@@ -14,15 +14,38 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     body = db.Column(db.String(455))
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 
     def __init__(self, title, body):
         self.title = title
         self.body = body
+        self.owner = owner
+
+
+class User(db.Model):
+    
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(120))
+    tasks = db.relationship('Task', backref='owner')
+
+    def __init__(self, email, password):
+        self.email = email
+        self.password = password
+
+
+@app.before_request
+def require_login():
+    allowed_routes = ['login', 'register']
+    if request.endpoint not in allowed_routes and 'email' not in session:
+        return redirect('/login')             
 
 
 @app.route('/')
 def page_redirect():
     return redirect('/blog')
+
 
 @app.route('/blog', methods=['GET'])
 def display():
@@ -38,6 +61,7 @@ def display():
     all_blog_posts = Blog.query.all()
 
     return render_template('blog.html', all_blog_posts=all_blog_posts) 
+
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def add_blog_post():
