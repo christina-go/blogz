@@ -20,20 +20,36 @@
             h1 {
                 text-align: center;
             }
+
+            .error {
+                list-style: none;
+            }
+
         </style>
-        <title>Doctor Who Blog</title>
+        <title>{{title}}</title>
 
     </head>
 <body>
-    <div class="navigation">
-        <a href='/blog'>Home</a>
+    <div class="navigation" display="inline-block">
+        <a href='/'>Home</a>
     </div>
     <div class="navigation" display="inline-block">
         <a href='/newpost'>Create a New Post</a>
+    </div>
+    <div class="navigation" display="inline-block">
+        <a href='/logout'>Log Out</a>
     </div> 
 
 
-    <h1 class="page-title">Doctor Who</h1>
+    <h1 class="page-title">{{title}}</h1>
+
+    {% with messages = get_flashed_messages() %}
+        <ul>
+        {% for message in messages %}
+            <li class="error">{{message}}</li>
+        {% endfor %}
+        </ul>
+    {% endwith %}
 
     {% block content %}
     {% endblock %}
