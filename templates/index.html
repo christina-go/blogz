@@ -1,6 +1,18 @@
-{% extends "wrapper.html" %}
+{% extends 'wrapper.html' %}
 
 {% block content %}
 
-<h2>woot we hit the index page. this means i came through as a GET request</h2>
+{% if all_blog_users|length == 0 %}
+    
+<p class="display-message">No posts yet</p>
+
+{% else %}
+    <ul>
+        {% for user in all_blog_users %}
+        <li><a href="./blog?id={{user.email}}"> {{user.email}} </a></li>
+        {% endfor %}
+    </ul>   
+
+{% endif %}
+
 {% endblock %}

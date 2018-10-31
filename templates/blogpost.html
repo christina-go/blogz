@@ -4,8 +4,9 @@
 {% block content %}
 
     <ul>
-        <li>{{post.title}}</li>
+        <li><h2>{{post.title}}</h2></li>
         <p>{{post.body}}</p>
+        <p class="byline" >written by: <a href="./blog?id={{post.owner}}"> {{post.owner}}</a></p>
     </ul>
 
 {% endblock %}

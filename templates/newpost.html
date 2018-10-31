@@ -1,31 +1,30 @@
 {% extends 'wrapper.html'%}
 
 {% block content %}
-    <form action="/index" method='post'>
+<div class="input-field">
+    <form method='post'>
         <div class="form-group">
-        <label class="input_field">
-            Title
-            <input class="form-control" type="text" name='title' required/>
-        </label>
-        <br>
-        <label class="input_field">
-            Blog Post
-            <textArea class="form-control" rows="20" cols="100" name='body' required/></textArea>
-        </label>
-        <label class="input_field">
-        <input class="btn btn-default" type="submit" value='Publish'  />
-        </label>
+            <div>
+                <label>
+                    Title
+                    <input class="form-control" type="text" name='title' required/>
+                </label>
+            </div>
+            <br>
+            <div>
+                <label class="input_field">
+                    Blog Post
+                        <textArea class="form-control" rows="20" cols="100" name='body' required/></textArea>
+                </label>
+            </div>
+            <br>    
+            <div>
+                <label class="input_field">
+                    <input class="btn btn-default" type="submit" value='Publish'  />
+                </label>
+            </div>
         </div>
     </form>
-    
-   <!-- this has to change from previous posts to other posts by the selected
-        user
-       <h1>Previous Posts</h1>
-    <ul>
-        {% for user in all_blog_users %}
-        <li><a href="./blog?user={{user.id}}"> {{user.username}} </a></li>
-        <p>{{post.body}}</p>
-        {% endfor %}
-    </ul>  -->
+</div>
 
-{% endblock %}    
+{% endblock %} 
